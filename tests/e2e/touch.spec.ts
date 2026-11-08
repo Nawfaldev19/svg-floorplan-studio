@@ -217,9 +217,18 @@ test('a swipe on the outline scrolls it without selecting anything @mobile', asy
   await openEditor(page);
   await toggle(page, 'Outline').tap();
   const list = page.getByRole('listbox');
+  await expect(list).toBeVisible();
+  // The sheet slides in; measure only once it has settled so the swipe starts on the list.
+  await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
   const box = await list.boundingBox();
   if (!box) throw new Error('outline not shown');
-  await touchDrag(page, { x: box.x + box.width / 2, y: box.y + box.height - 30 }, 0, -200);
+  const start = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  const onList = await list.evaluate(
+    (element, p) => element.contains(document.elementFromPoint(p.x, p.y)),
+    start,
+  );
+  expect(onList).toBe(true);
+  await touchDrag(page, start, 0, -200);
   await expect.poll(() => list.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
   await expect(list.locator('[aria-selected="true"]')).toHaveCount(0);
   // A tap still picks an option.
