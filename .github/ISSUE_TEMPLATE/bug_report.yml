@@ -1,0 +1,61 @@
+name: Bug report
+description: Something in the editor or the viewer does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. For security problems, use private reporting instead (see SECURITY.md).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open #/editor
+        2. Select "Fern desk 1"
+        3. Press ...
+    validations:
+      required: true
+  - type: input
+    id: feature
+    attributes:
+      label: Feature ID
+      description: The F-number from docs/reference/features.md, if you know it.
+      placeholder: F-03
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Chrome 140 on macOS 15
+    validations:
+      required: true
+  - type: dropdown
+    id: input
+    attributes:
+      label: Input method
+      multiple: true
+      options:
+        - Mouse or trackpad
+        - Keyboard only
+        - Touch
+        - Screen reader
+        - Other assistive technology
+  - type: textarea
+    id: plan
+    attributes:
+      label: Plan file
+      description: If the problem depends on a plan, attach an exported .floorplan-studio.json (it contains only the plan) or describe it.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for this problem.
+          required: true
