@@ -1,0 +1,114 @@
+/* Site header: brand, navigation links and the theme toggle. */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-height);
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.mark {
+  width: 28px;
+  height: 28px;
+}
+
+.mark rect {
+  fill: var(--color-primary);
+}
+
+.mark path {
+  fill: none;
+  stroke: var(--color-on-primary);
+  stroke-width: 2;
+}
+
+.mark circle {
+  fill: var(--color-accent);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-control);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-control);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--text-md);
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--duration-micro) var(--ease-standard),
+    background var(--duration-micro) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--color-text);
+  background: var(--color-sunken);
+}
+
+.link[aria-current='page'] {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+  border-radius: var(--radius-control) var(--radius-control) 0 0;
+}
+
+.theme {
+  margin-left: auto;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--size-control);
+  height: var(--size-control);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: transparent;
+  cursor: pointer;
+}
+
+.theme:hover {
+  background: var(--color-sunken);
+}
+
+/* Phones: the mark alone stands for the brand; its name stays the link's accessible name. */
+@media (max-width: 520px) {
+  .header {
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+  }
+
+  .brandName {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .link {
+    padding: 0 var(--space-2);
+  }
+}

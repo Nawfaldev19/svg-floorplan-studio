@@ -1,0 +1,74 @@
+/* Modal dialog: panel, backdrop, heading, body and actions. Long bodies scroll between a fixed heading and fixed actions. */
+.dialog {
+  width: min(440px, calc(100vw - var(--space-8)));
+  max-height: min(88dvh, calc(100dvh - var(--space-8)));
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-dialog);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-3);
+}
+
+.wide {
+  width: min(680px, calc(100vw - var(--space-8)));
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: enter var(--duration-enter) var(--ease-standard);
+}
+
+.dialog::backdrop {
+  background: var(--color-overlay);
+}
+
+.title {
+  font-size: var(--text-lg);
+}
+
+.body {
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+}
+
+.body > * + * {
+  margin-top: var(--space-3);
+}
+
+.body ul {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 520px) {
+  .dialog {
+    padding: var(--space-4);
+  }
+
+  .actions {
+    margin-top: var(--space-4);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}

@@ -1,0 +1,38 @@
+/* Shortcut help: two columns of key and description pairs. */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4) var(--space-6);
+}
+
+.heading {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, auto) 1fr;
+  gap: var(--space-3);
+  align-items: baseline;
+  font-size: var(--text-md);
+}
+
+.entry dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.entry kbd {
+  white-space: nowrap;
+}
+
+.scope {
+  font-size: var(--text-xs);
+}
