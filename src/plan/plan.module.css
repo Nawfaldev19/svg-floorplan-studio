@@ -1,0 +1,73 @@
+/* Shared plan drawing: item fills per kind, labels, amenity marks, dimmed and emphasised states, the grid. */
+.item > rect,
+.item > ellipse {
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  transition: opacity var(--duration-standard) var(--ease-standard);
+}
+
+.desk > rect {
+  fill: var(--item-desk);
+  stroke: var(--item-desk-stroke);
+}
+
+.meetingRoom > rect {
+  fill: var(--item-meeting-room);
+  stroke: var(--item-meeting-room-stroke);
+}
+
+.lounge > ellipse {
+  fill: var(--item-lounge);
+  stroke: var(--item-lounge-stroke);
+}
+
+.planter > ellipse {
+  fill: var(--item-planter);
+  stroke: var(--item-planter-stroke);
+}
+
+.wall > rect {
+  fill: var(--item-wall);
+  stroke: var(--item-wall-stroke);
+}
+
+.label {
+  fill: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-anchor: middle;
+  user-select: none;
+}
+
+.mark {
+  stroke: var(--color-surface);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.swatch {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  overflow: visible;
+}
+
+.swatch .mark {
+  stroke: none;
+}
+
+.dimmed {
+  opacity: 0.22;
+}
+
+.emphasized > rect,
+.emphasized > ellipse {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+.gridLine {
+  fill: none;
+  stroke: var(--color-grid);
+}
