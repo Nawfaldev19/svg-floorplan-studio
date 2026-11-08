@@ -1,0 +1,83 @@
+/* Editor canvas: cursors, selection outlines with halos, handles, the rotate knob and the marquee. */
+.canvas {
+  display: block;
+  touch-action: none;
+  user-select: none;
+  background: var(--color-surface);
+  cursor: default;
+}
+
+.canvas:focus-visible {
+  outline-offset: -3px;
+}
+
+.paintCursor {
+  cursor: crosshair;
+}
+
+.panCursor {
+  cursor: grab;
+}
+
+.panCursor:active {
+  cursor: grabbing;
+}
+
+.halo {
+  fill: none;
+  stroke: var(--color-surface);
+  stroke-width: 5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.outline,
+.memberOutline {
+  fill: none;
+  stroke: var(--color-focus);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.memberOutline {
+  stroke-width: 1.5;
+}
+
+.groupBox {
+  fill: none;
+  stroke: var(--color-focus);
+  stroke-dasharray: 6 4;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.handle,
+.knob {
+  fill: var(--color-surface);
+  stroke: var(--color-focus);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.hitArea {
+  fill: transparent;
+  stroke: none;
+}
+
+[data-handle='rotate'] {
+  cursor: grab;
+}
+
+.knobStem {
+  stroke: var(--color-focus);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.marquee {
+  fill: color-mix(in srgb, var(--color-focus) 10%, transparent);
+  stroke: var(--color-focus);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  vector-effect: non-scaling-stroke;
+}
