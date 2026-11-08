@@ -1,0 +1,29 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+.eslintcache
+*.local
+
+# Test and coverage output
+coverage/
+.vitest/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.e2e-storage/
+**/storage/
+
+# Logs and generated reports
+*.log
+npm-debug.log*
+sbom*.json
+*.cdx.json
+*.sarif
+results.sarif
+
+# Local settings and secrets
+.env
+.env.*
+.DS_Store

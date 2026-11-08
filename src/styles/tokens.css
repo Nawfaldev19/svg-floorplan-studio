@@ -1,0 +1,183 @@
+/*
+ * Larkspur design tokens: every colour, size and timing the app uses. Light
+ * values are the default; dark values follow the OS or the theme toggle.
+ */
+:root {
+  color-scheme: light;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque Variable', 'Avenir Next', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.953rem;
+  --text-4xl: 3.052rem;
+  --leading-body: 1.5;
+  --leading-display: 1.15;
+
+  /* Colour, light */
+  --color-bg: #faf7f2;
+  --color-surface: #ffffff;
+  --color-sunken: #f2eee6;
+  --color-text: #1c2321;
+  --color-text-muted: #56605b;
+  --color-border: #dcd6cb;
+  --color-border-strong: #857e73;
+  --color-primary: #2d6a4f;
+  --color-on-primary: #ffffff;
+  --color-primary-soft: #dcebe3;
+  --color-accent: #9a4614;
+  --color-danger: #b42318;
+  --color-on-danger: #ffffff;
+  --color-focus: #7a4fd6;
+  --color-grid: rgb(28 35 33 / 0.07);
+  --color-overlay: rgb(17 22 20 / 0.45);
+
+  /* Spacing (4px base) */
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-dialog: 16px;
+  --radius-pill: 999px;
+
+  /* Layout and targets */
+  --header-height: 56px;
+  --size-control: 36px;
+  --size-control-large: 44px;
+
+  /* Shadow */
+  --shadow-1: 0 1px 2px rgb(64 45 20 / 0.08);
+  --shadow-2: 0 4px 12px rgb(64 45 20 / 0.1), 0 1px 3px rgb(64 45 20 / 0.08);
+  --shadow-3: 0 16px 40px rgb(64 45 20 / 0.16), 0 4px 10px rgb(64 45 20 / 0.08);
+
+  /* Motion */
+  --duration-micro: 120ms;
+  --duration-standard: 200ms;
+  --duration-enter: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Floorplan Studio item palette (built on the system hues) */
+  --item-desk: #e8dcc7;
+  --item-desk-stroke: #8a6d45;
+  --item-meeting-room: #dcebe3;
+  --item-meeting-room-stroke: #2d6a4f;
+  --item-lounge: #f4e1d2;
+  --item-lounge-stroke: #9a4614;
+  --item-planter: #cfe5c4;
+  --item-planter-stroke: #3d7a3a;
+  --item-wall: #4a514e;
+  --item-wall-stroke: #2b302e;
+  --amenity-standing: #2b5c8a;
+  --amenity-dual-monitor: #7a4fd6;
+  --amenity-quiet: #2d6a4f;
+  --amenity-window: #946400;
+  --amenity-step-free: #b42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-bg: #111614;
+    --color-surface: #181e1b;
+    --color-sunken: #0c100e;
+    --color-text: #e9eeea;
+    --color-text-muted: #a2ada7;
+    --color-border: #2c3531;
+    --color-border-strong: #68736d;
+    --color-primary: #74c69d;
+    --color-on-primary: #0b1f15;
+    --color-primary-soft: #1d3a2c;
+    --color-accent: #f0a46b;
+    --color-danger: #f97066;
+    --color-on-danger: #1c0b09;
+    --color-focus: #b79cff;
+    --color-grid: rgb(233 238 234 / 0.06);
+    --color-overlay: rgb(0 0 0 / 0.6);
+    --shadow-1: none;
+    --shadow-2: 0 0 0 1px var(--color-border);
+    --shadow-3: 0 0 0 1px var(--color-border), 0 16px 40px rgb(0 0 0 / 0.5);
+    --item-desk: #3a3226;
+    --item-desk-stroke: #c9a875;
+    --item-meeting-room: #1d3a2c;
+    --item-meeting-room-stroke: #74c69d;
+    --item-lounge: #3d2a1d;
+    --item-lounge-stroke: #f0a46b;
+    --item-planter: #23391f;
+    --item-planter-stroke: #8fcf86;
+    --item-wall: #a2ada7;
+    --item-wall-stroke: #e9eeea;
+    --amenity-standing: #7db4e6;
+    --amenity-dual-monitor: #b79cff;
+    --amenity-quiet: #74c69d;
+    --amenity-window: #f5b94a;
+    --amenity-step-free: #f97066;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #111614;
+  --color-surface: #181e1b;
+  --color-sunken: #0c100e;
+  --color-text: #e9eeea;
+  --color-text-muted: #a2ada7;
+  --color-border: #2c3531;
+  --color-border-strong: #68736d;
+  --color-primary: #74c69d;
+  --color-on-primary: #0b1f15;
+  --color-primary-soft: #1d3a2c;
+  --color-accent: #f0a46b;
+  --color-danger: #f97066;
+  --color-on-danger: #1c0b09;
+  --color-focus: #b79cff;
+  --color-grid: rgb(233 238 234 / 0.06);
+  --color-overlay: rgb(0 0 0 / 0.6);
+  --shadow-1: none;
+  --shadow-2: 0 0 0 1px var(--color-border);
+  --shadow-3: 0 0 0 1px var(--color-border), 0 16px 40px rgb(0 0 0 / 0.5);
+  --item-desk: #3a3226;
+  --item-desk-stroke: #c9a875;
+  --item-meeting-room: #1d3a2c;
+  --item-meeting-room-stroke: #74c69d;
+  --item-lounge: #3d2a1d;
+  --item-lounge-stroke: #f0a46b;
+  --item-planter: #23391f;
+  --item-planter-stroke: #8fcf86;
+  --item-wall: #a2ada7;
+  --item-wall-stroke: #e9eeea;
+  --amenity-standing: #7db4e6;
+  --amenity-dual-monitor: #b79cff;
+  --amenity-quiet: #74c69d;
+  --amenity-window: #f5b94a;
+  --amenity-step-free: #f97066;
+}
+
+/* Touch screens get 44 px controls (WCAG 2.5.5 Target Size, enhanced). */
+@media (pointer: coarse) {
+  :root {
+    --size-control: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-micro: 0ms;
+    --duration-standard: 0ms;
+    --duration-enter: 0ms;
+  }
+}
