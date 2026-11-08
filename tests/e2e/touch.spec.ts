@@ -55,6 +55,30 @@ async function touchDrag(page: Page, from: Point, dx: number, dy: number) {
   await cdp.detach();
 }
 
+/**
+ * Swipes one finger from `from` by `dy` screen pixels with raw touch events.
+ * Chromium turns these into gestures with its own touch emulator, the same on
+ * every platform. A synthesized scroll gesture goes through the platform input
+ * stack instead, and on Linux it leaves a scroll container inside the page
+ * (here the outline list) where it was, although it scrolls the page itself.
+ */
+async function touchSwipe(page: Page, from: Point, dy: number) {
+  const cdp = await page.context().newCDPSession(page);
+  const touch = (type: 'touchStart' | 'touchMove' | 'touchEnd', y: number) =>
+    cdp.send('Input.dispatchTouchEvent', {
+      type,
+      touchPoints: type === 'touchEnd' ? [] : [{ x: from.x, y }],
+    });
+  const steps = 20;
+  await touch('touchStart', from.y);
+  for (let step = 1; step <= steps; step++) {
+    await touch('touchMove', from.y + (dy * step) / steps);
+    await page.waitForTimeout(16);
+  }
+  await touch('touchEnd', from.y + dy);
+  await cdp.detach();
+}
+
 /** Spreads (factor above 1) or closes two fingers around `centre`. */
 async function pinch(page: Page, centre: Point, factor: number) {
   const cdp = await page.context().newCDPSession(page);
@@ -228,7 +252,7 @@ test('a swipe on the outline scrolls it without selecting anything @mobile', asy
     start,
   );
   expect(onList).toBe(true);
-  await touchDrag(page, start, 0, -200);
+  await touchSwipe(page, start, -200);
   await expect.poll(() => list.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
   await expect(list.locator('[aria-selected="true"]')).toHaveCount(0);
   // A tap still picks an option.
