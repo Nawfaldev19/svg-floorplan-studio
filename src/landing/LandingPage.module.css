@@ -1,0 +1,143 @@
+/* Overview page: hero, feature points and the shortcut list. */
+.page {
+  min-height: calc(100dvh - var(--header-height));
+  padding: var(--space-12) var(--space-4) var(--space-16);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(var(--color-grid) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+.hero,
+.points,
+.shortcuts {
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 14ch;
+  margin-top: var(--space-3);
+  font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl));
+}
+
+.lede {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--size-control-large);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-control);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--duration-micro) var(--ease-standard);
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.secondary {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-1px);
+}
+
+.points {
+  display: grid;
+  /* Four cards: one line of four, two by two, or one column, never three and an orphan. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+  padding: 0;
+  list-style: none;
+}
+
+.point {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+  animation: rise var(--duration-enter) var(--ease-standard) both;
+}
+
+.point:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.point:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.point:nth-child(4) {
+  animation-delay: 180ms;
+}
+
+.pointIcon {
+  color: var(--color-primary);
+}
+
+.pointTitle {
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+}
+
+.shortcuts {
+  margin-top: var(--space-12);
+}
+
+.shortcutsTitle {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-xl);
+}
+
+@media (max-width: 900px) {
+  .points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .points {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
